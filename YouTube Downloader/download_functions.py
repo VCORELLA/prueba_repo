@@ -36,7 +36,8 @@ class Messages():
                             'La resolución pudo haber afectado el audio, '
                             'se recomienda elegir otra resolución.')
 
-    # Mensaje de aviso de descarga no exitosa.
+    # Mensaje de aviso de descarga no exitosa (SI el video es muy largo
+    #  puede dar problemas con la descarga).
     def error_download(self):
         messagebox.showinfo('Advertencia',
                             'Hubo un problema con su descarga, intente '
@@ -479,9 +480,9 @@ class Functions():
             else:
                 str_measure = str_measure + ' ' + list_texto[i]
 
-            # Si la longitud del texto supera los 58 caracteres entonces se
+            # Si la longitud del texto supera los 70 caracteres entonces se
             # ejecutará el siguiente bloque de código.
-            if len(str_measure) > 58:
+            if len(str_measure) > 70:
                 # Se debe separar el texto en donde existan espacios.
                 nuevo_texto = str_measure.split(' ')
                 # La última palabra es la que está causando el problema, por
@@ -579,8 +580,8 @@ class Functions():
             # Se crea una caja para decidir la resolución de
             # video que se quiere.
             resolutions_cb = ttk.Combobox(self.misc, values=resolutions)
-            tk.Label(self.misc, text='Resolución').place(x=170, y=10)
-            resolutions_cb.place(x=170, y=40)
+            tk.Label(self.misc, text='Resolución').place(x=200, y=10)
+            resolutions_cb.place(x=200, y=40)
             resolutions_cb.bind('<<ComboboxSelected>>', lambda event:
                                 self.resolution_choice(event, exceeding))
         # Si el formato es de audio entonces se ejecutará todo el siguiente
@@ -593,8 +594,8 @@ class Functions():
             self.erase_widgets(elements)
             # Se crea una variable en donde guardar el formato de archivo.
             file_types_cb = ttk.Combobox(self.misc, values='mp3')
-            tk.Label(self.misc, text='Formato de archivo').place(x=170, y=10)
-            file_types_cb.place(x=170, y=40)
+            tk.Label(self.misc, text='Formato de archivo').place(x=200, y=10)
+            file_types_cb.place(x=200, y=40)
             file_types_cb.bind('<<ComboboxSelected>>', lambda event:
                                self.set_file_type(event))
 
@@ -629,7 +630,7 @@ class Functions():
             # Se despliega la imagen del video solicitado.
             th_picture = tk.Label(self.misc, image=my_thumbnail)
             th_picture.image = my_thumbnail
-            th_picture.place(x=325, y=5)
+            th_picture.place(x=405, y=5)
 
             # Se despliega el nombre del video solicitado 2.
             tk.Label(self.misc, text='Video:',
@@ -660,7 +661,7 @@ class Functions():
             f_entry.place(x=150, y=182)
 
             # Se crea una variable en donde guardar la dirección del video.
-            my_location = tk.Entry(self.misc, width=50)
+            my_location = tk.Entry(self.misc, width=48)
             self.location = my_location
             tk.Label(self.misc, text='Dirección:',
                      font='arial 10 bold').place(x=10, y=220)
@@ -668,7 +669,7 @@ class Functions():
             location_button = tk.Button(self.misc, text='Elegir', width=10,
                                         command=lambda:
                                         self.insertPath(my_location))
-            location_button.place(x=405, y=220)
+            location_button.place(x=482, y=220)
 
             # Se crea una variable para proceder con la descarga del video.
             download_button = tk.Button(self.misc, text='Descargar',
@@ -676,7 +677,7 @@ class Functions():
                                         foreground='white', padx=2,
                                         command=lambda:
                                         self.download_video())
-            download_button.place(x=150, y=260)
+            download_button.place(x=190, y=270)
             # Se crea una variable para abrir una nueva ventana del video.
             # Aquí hay 2 más: normal es 11 con texto adicional 12.
             # en el otro son 13 y con texto adicional 14.
@@ -686,7 +687,7 @@ class Functions():
                                      foreground='white', padx=2,
                                      command=lambda:
                                      self.open_again())
-            again_button.place(x=250, y=260)
+            again_button.place(x=290, y=270)
         # En caso de que se retorne False entonces se emitirá una advertencia.
         else:
             messagebox.showinfo('Advertencia', ('Ha ocurrido un error, '
