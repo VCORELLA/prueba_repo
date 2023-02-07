@@ -30,12 +30,13 @@ class Window():
                  font='roboto 9').place(x=50, y=157)
         tk.Label(self.root, text='Inserte el enlace aquí: ',
                  font='roboto 15').place(x=175, y=102)
+        # Se cree una ventana de texto en donde escribir el link del video.
         link = tk.Entry(self.root, width=70,
                         highlightthickness=3,
                         highlightbackground='#ff0068',
                         highlightcolor='#ff0068')
         link.place(x=15, y=130)
-        # Se crea un botoón para comenzar la descarga.
+        # Se crea un botón para comenzar la descarga.
         start_button = tk.Button(self.root, text='Comenzar', font='roboto 15',
                                  bg='#ff0068', foreground='white', padx=2,
                                  command=lambda:
